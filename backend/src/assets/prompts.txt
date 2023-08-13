@@ -1,4 +1,4 @@
-hello 
+hello [placeholder] how are you [name]
 world
 hello 
 world

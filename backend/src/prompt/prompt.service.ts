@@ -21,4 +21,13 @@ export class PromptService {
         }
         return this.prompts[id];
     }
+
+    completeThePrompt(prompt:string, properties) {
+        for (const key in properties) {
+            if(prompt.indexOf(`[${key}]`) >= 0 ){
+                prompt = prompt.split(`[${key}]`).join(properties[key]);
+            }
+        }
+        return prompt;
+    }
 }
