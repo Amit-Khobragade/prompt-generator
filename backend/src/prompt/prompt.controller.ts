@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post, Query } from '@nestjs/common';
 import { PromptService } from './prompt.service';
 
 @Controller('prompt')
@@ -6,8 +6,8 @@ export class PromptController {
     constructor(private readonly promptService: PromptService) {}
 
     @Get()
-    getAllPaths() : string[]{
-        return this.promptService.getAllPrompts();
+    getAllPaths(@Query('idStart') idStart: number, @Query('idEnd') idEnd: number) : string[]{
+        return this.promptService.getAllPrompts().slice(idStart, idEnd);
     }
 
     @Get(':id')
